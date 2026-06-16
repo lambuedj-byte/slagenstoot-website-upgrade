@@ -7,9 +7,9 @@
 <meta name="description" content="Slag &amp; Stoot is een carnaval dj-act in honkbalpak die in één uur carnaval én jouw favoriete hits draait. Eigen platen, óók live. Eigen plaat #13 in de Spotify Viral 50 NL. Boek nu.">
 <link rel="canonical" href="https://www.slagenstoot.nl/">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta name="theme-color" content="#12161d">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Slag &amp; Stoot — Carnaval DJ-act in Honkbalpak">
@@ -154,6 +154,15 @@
   .sec.light .sec-title em{color:var(--red);}
   .sec.light .sec-intro{color:var(--ink-soft);}
   .sec.light .eyebrow{color:#c2541a;}
+  /* orange break-out section (Backstage op Instagram) */
+  .sec.orange{background:linear-gradient(135deg,#f26a1e,#e8462f 72%);color:#fff;}
+  .sec.orange .sec-title{color:#fff;}
+  .sec.orange .sec-title em{color:#2a1206;}
+  .sec.orange .sec-title.wipe::after{background:#2a1206;}
+  .sec.orange .sec-intro{color:rgba(255,255,255,.94);}
+  .sec.orange .eyebrow{color:#2a1206;}
+  .sec.orange .ig-btn{background:#fff;color:#bf3320;box-shadow:0 12px 30px -12px rgba(0,0,0,.45);}
+  .sec.orange .ig-btn:hover{filter:none;background:#fff7f2;transform:translateY(-2px);}
 
   /* about */
   .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;}
@@ -306,8 +315,10 @@
   .tilt:hover::before{opacity:1;}
 
   /* milestone — standalone, groot (zoals slagenstoot.nl) */
-  .milestone-big{display:grid;grid-template-columns:minmax(300px,460px) 1fr;gap:clamp(28px,5vw,60px);align-items:center;}
-  .milestone-big img{width:100%;border-radius:16px;border:1px solid var(--line);box-shadow:0 36px 80px -30px rgba(0,0,0,.75);}
+  .milestone-big{display:grid;grid-template-columns:minmax(210px,320px) 1fr;gap:clamp(28px,5vw,56px);align-items:center;}
+  .ms-photo{position:relative;max-width:340px;width:100%;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 70px -28px rgba(0,0,0,.75);}
+  .ms-photo img{width:100%;display:block;}
+  .ms-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(242,106,30,.58),rgba(232,70,47,.22) 55%,rgba(242,106,30,0) 85%);mix-blend-mode:multiply;pointer-events:none;}
   .milestone-big .ms-13{font-family:'Graduate',serif;font-size:clamp(4rem,11vw,7rem);color:var(--orange);line-height:.8;text-shadow:0 5px 0 var(--red-deep);margin-top:6px;}
   .milestone-big h2{font-size:clamp(2rem,5vw,3.2rem);color:var(--cream);margin-top:6px;}
   .milestone-big h2 em{font-style:normal;color:var(--gold);}
@@ -363,7 +374,7 @@
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-bg">
-    <video autoplay muted loop playsinline preload="auto" poster="images/hero-orange.jpg"><source src="videos/hero-promo.mp4" type="video/mp4"></video>
+    <video autoplay muted loop playsinline preload="auto" poster="hero-orange.jpg"><source src="hero-promo.mp4" type="video/mp4"></video>
     <div class="stripes"></div>
   </div>
   <div class="hero-glow" aria-hidden="true"></div>
@@ -413,12 +424,12 @@
       </div>
       <div class="reveal d2">
         <div class="about-photo">
-          <img src="images/about-cream.jpg" alt="Slag en Stoot — Tim en Rens in honkbalpak met knuppel en handschoen">
+          <img src="about-cream.jpg" alt="Slag en Stoot — Tim en Rens in honkbalpak met knuppel en handschoen">
           <div class="pn"><span class="nm">SLAG &amp; STOOT</span><span class="no">13</span></div>
         </div>
         <div class="about-vids">
-          <div class="mv"><span class="tg">Backstage</span><video src="videos/promo-2.mp4" autoplay muted loop playsinline preload="auto" aria-label="Backstage impressie"></video></div>
-          <div class="mv"><span class="tg">Impressie</span><video src="videos/recap-6.mp4" autoplay muted loop playsinline preload="auto" aria-label="Sfeerimpressie"></video></div>
+          <div class="mv"><span class="tg">Backstage</span><video src="promo-2.mp4" autoplay muted loop playsinline preload="auto" aria-label="Backstage impressie"></video></div>
+          <div class="mv"><span class="tg">Impressie</span><video src="recap-6.mp4" autoplay muted loop playsinline preload="auto" aria-label="Sfeerimpressie"></video></div>
         </div>
       </div>
     </div>
@@ -429,7 +440,7 @@
 <section class="sec dark" id="mijlpaal" aria-labelledby="ms-title">
   <div class="wrap">
     <div class="milestone-big reveal">
-      <img src="images/viral-50.jpg" alt="Slag en Stoot: #13 in de Spotify Viral 50 Nederland">
+      <div class="ms-photo"><img src="viral-50.jpg" alt="Slag en Stoot: #13 in de Spotify Viral 50 Nederland"></div>
       <div>
         <span class="eyebrow"><svg class="cup" viewBox="0 0 15 18" aria-hidden="true"><path d="M2 3h11l-1.4 13a1.5 1.5 0 0 1-1.5 1.3H4.9a1.5 1.5 0 0 1-1.5-1.3z" fill="#f26a1e"/><rect x="1" y="1.5" width="13" height="2.6" rx="1.3" fill="#ffd0ad"/></svg> Dikke mijlpaal</span>
         <div class="ms-13" aria-hidden="true">#13</div>
@@ -449,10 +460,10 @@
       <p class="sec-intro">Een paar recente clips — beweeg erover om mee te kijken.</p>
     </div>
     <div class="ig-reels">
-      <div class="reel reveal"><span class="rt">Story</span><video src="videos/recap-2.mp4" autoplay muted loop playsinline preload="auto"></video></div>
-      <div class="reel reveal"><span class="rt">Recap</span><video src="videos/recap-3.mp4" autoplay muted loop playsinline preload="auto"></video></div>
-      <div class="reel reveal"><span class="rt">Live</span><video src="videos/recap-4.mp4" autoplay muted loop playsinline preload="auto"></video></div>
-      <div class="reel reveal"><span class="rt">Snippet</span><video src="videos/recap-5.mp4" autoplay muted loop playsinline preload="auto"></video></div>
+      <div class="reel reveal"><span class="rt">Story</span><video src="recap-2.mp4" autoplay muted loop playsinline preload="auto"></video></div>
+      <div class="reel reveal"><span class="rt">Recap</span><video src="recap-3.mp4" autoplay muted loop playsinline preload="auto"></video></div>
+      <div class="reel reveal"><span class="rt">Live</span><video src="recap-4.mp4" autoplay muted loop playsinline preload="auto"></video></div>
+      <div class="reel reveal"><span class="rt">Snippet</span><video src="recap-5.mp4" autoplay muted loop playsinline preload="auto"></video></div>
     </div>
   </div>
 </section>
@@ -467,7 +478,7 @@
     <div class="music-grid">
       <div class="track-feat reveal">
         <div class="tf-media">
-          <video src="videos/promo-zet-die-tap.mp4" autoplay muted loop playsinline preload="auto" poster="images/hero-orange.jpg"></video>
+          <video src="promo-zet-die-tap.mp4" autoplay muted loop playsinline preload="auto" poster="hero-orange.jpg"></video>
           <span class="badge">Hit 2026 · #13 Viral 50</span>
         </div>
         <div class="tf-body">
@@ -486,7 +497,7 @@
 </section>
 
 <!-- INSTAGRAM (light) -->
-<section class="sec light" id="instagram" aria-labelledby="ig-title">
+<section class="sec orange" id="instagram" aria-labelledby="ig-title">
   <div class="wrap">
     <div class="sec-head center reveal">
       <span class="eyebrow" style="justify-content:center"><svg class="cup" viewBox="0 0 15 18" aria-hidden="true"><path d="M2 3h11l-1.4 13a1.5 1.5 0 0 1-1.5 1.3H4.9a1.5 1.5 0 0 1-1.5-1.3z" fill="#f26a1e"/><rect x="1" y="1.5" width="13" height="2.6" rx="1.3" fill="#ffd0ad"/></svg> Op Instagram</span>
