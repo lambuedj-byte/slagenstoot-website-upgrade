@@ -339,11 +339,12 @@
     .nav-toggle{display:flex;}
     .nav-links a{font-size:1.1rem;}
   }
-  @media(max-width:560px){.ig-reels,.facts{grid-template-columns:1fr;}.facts{grid-template-columns:repeat(3,1fr);}.roster{grid-template-columns:1fr;}}
+  @media(max-width:560px){.facts{grid-template-columns:repeat(3,1fr);}.ig-reels{grid-template-columns:repeat(2,1fr);}.roster{grid-template-columns:1fr;}.wrap{padding-left:28px;padding-right:28px;}.hero h1 .grad{font-size:clamp(2.5rem,10vw,8.4rem);}}
   @media(prefers-reduced-motion:reduce){
     *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important;}
-    .hero-bg video,.hero-glow,.floaty,.floaty .bob,.marquee-track,.hero h1 .grad::after{animation:none!important;}
+    .hero-bg video,.hero-glow,.floaty,.floaty .bob,.hero h1 .grad::after{animation:none!important;}
     .floaty{opacity:.7;} .tilt{transform:none!important;}
+    .marquee-track{animation:scrollx 32s linear infinite!important;}
   }
 </style>
 </head>
