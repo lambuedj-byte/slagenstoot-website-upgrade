@@ -1,0 +1,10 @@
+Zet hier je eigen promovideo's neer met deze bestandsnamen, dan spelen ze automatisch (gedempt, in loop) af op de site:
+
+- hero-promo.mp4        -> achtergrondvideo in de hero (boven aan de pagina)
+- promo-zet-die-tap.mp4 -> uitgelichte video bij "Zet Die Tap Maar Open" in de muziek-sectie
+- promo-2.mp4           -> kleine videotegel in de fotogalerij bij "Over ons"
+
+Tips:
+- Gebruik mp4 (H.264), het liefst 1080p of lager zodat de site snel laadt
+- Zonder geluid is prima, ze spelen toch gedempt af
+- Tot die tijd tonen deze plekken gewoon de oranje persfoto als achtergrond
