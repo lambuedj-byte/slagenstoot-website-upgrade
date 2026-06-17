@@ -176,11 +176,8 @@
   .sec.light .tier .price small{color:#7a8498;}
   .sec.light .btn-line{color:var(--ink);border-color:rgba(25,30,38,.28);}
   .sec.light .btn-line:hover{background:var(--ink);color:#fff;border-color:var(--ink);}
-  /* booking background photo */
+  /* booking — geen foto, warm donker gradient */
   .book{position:relative;overflow:hidden;}
-  .book-bg{position:absolute;inset:0;z-index:0;}
-  .book-bg img{width:100%;height:100%;object-fit:cover;opacity:.3;}
-  .book-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,22,29,.74),rgba(18,22,29,.93));}
   .book .wrap{position:relative;z-index:1;}
   /* YouTube recaps button */
   .yt-recaps{display:flex;justify-content:center;margin-top:30px;}
@@ -280,7 +277,11 @@
   .faq-a p{padding:0 24px 22px;color:#4a5468;font-size:1rem;line-height:1.68;}
 
   /* booking (big & clear) */
-  .book{background:var(--bg);}
+  .book{background:
+    radial-gradient(130% 90% at 50% 62%,rgba(242,106,30,.22),transparent 60%),
+    radial-gradient(70% 60% at 94% 4%,rgba(232,70,47,.15),transparent 52%),
+    radial-gradient(55% 50% at 4% 94%,rgba(234,182,79,.14),transparent 52%),
+    var(--bg);}
   .book-card{position:relative;border-radius:22px;border:1px solid rgba(242,106,30,.45);background:linear-gradient(135deg,rgba(242,106,30,.2),var(--surface));padding:clamp(36px,6vw,72px);box-shadow:0 50px 110px -40px rgba(242,106,30,.6);text-align:center;}
   .book-card .eyebrow{justify-content:center;}
   .book-card h2{color:var(--cream);font-size:clamp(2.4rem,6.5vw,4.4rem);margin:14px 0 14px;}
@@ -342,7 +343,7 @@
   .milestone-big{display:grid;grid-template-columns:minmax(210px,320px) 1fr;gap:clamp(28px,5vw,56px);align-items:center;}
   .ms-photo{position:relative;max-width:340px;width:100%;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 70px -28px rgba(0,0,0,.75);}
   .ms-photo img{width:100%;display:block;}
-  .ms-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(242,106,30,.58),rgba(232,70,47,.22) 55%,rgba(242,106,30,0) 85%);mix-blend-mode:multiply;pointer-events:none;}
+  .ms-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(18,22,29,.45) 100%);pointer-events:none;}
   .milestone-big .ms-13{font-family:'Graduate',serif;font-size:clamp(4rem,11vw,7rem);color:var(--orange);line-height:.8;text-shadow:0 5px 0 var(--red-deep);margin-top:6px;}
   .milestone-big h2{font-size:clamp(2rem,5vw,3.2rem);color:var(--cream);margin-top:6px;}
   .milestone-big h2 em{font-style:normal;color:var(--gold);}
@@ -352,12 +353,23 @@
   /* ── Warmglow: dark-sectie met warme oranje radiale gloed (variant van mijl) ── */
   .sec.dark.warmglow{background:radial-gradient(110% 70% at 10% 90%,rgba(242,106,30,.13),transparent 54%),radial-gradient(60% 44% at 92% 6%,rgba(232,70,47,.09),transparent 50%),var(--bg);}
 
-  /* ── Booking-sectie: warm oranje centrum-glow over de foto ── */
-  .book-orange-glow{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(80% 58% at 50% 36%,rgba(242,106,30,.22),transparent 62%);}
+  /* ── Serpentine animaties ── */
+  @keyframes serp1{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(7deg) translateX(12px)}}
+  @keyframes serp2{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-20px) rotate(5deg)}}
+  @keyframes serp3{0%,100%{transform:rotate(-5deg) skewX(-4deg)}33%{transform:rotate(6deg) skewX(5deg)}66%{transform:rotate(-2deg) skewX(-1deg)}}
+  @keyframes serp4{0%,100%{transform:translateX(0) rotate(3deg)}50%{transform:translateX(-14px) rotate(-5deg)}}
+  @keyframes serp5{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(5deg) translateY(-12px)}}
 
   /* ── Serpentine (streamer) decoratieve lagen ── */
   .serp-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;}
   .serp-layer svg{position:absolute;}
+  .serp-layer .sv1{animation:serp1 4.2s ease-in-out infinite;transform-origin:top center;}
+  .serp-layer .sv2{animation:serp2 5.8s ease-in-out infinite;transform-origin:top center;}
+  .serp-layer .sv3{animation:serp3 6.4s ease-in-out 0.9s infinite;transform-origin:top center;}
+  .serp-layer .sv4{animation:serp4 5.1s ease-in-out 0.6s infinite;transform-origin:top center;}
+  .serp-layer .sv5{animation:serp5 7.2s ease-in-out 1.8s infinite;transform-origin:top center;}
+  .serp-layer .sv6{animation:serp2 4.8s ease-in-out 2.5s infinite;transform-origin:top center;}
+  @media(prefers-reduced-motion:reduce){.serp-layer svg{animation:none!important;}}
 
   /* responsive */
   @media(max-width:880px){.milestone-big{grid-template-columns:1fr;text-align:center;justify-items:center;}.milestone-big p{margin-left:auto;margin-right:auto;}}
@@ -474,14 +486,15 @@
 <!-- MIJLPAAL (#13) — standalone, groot -->
 <section class="sec dark mijl" id="mijlpaal" aria-labelledby="ms-title">
   <div class="serp-layer" aria-hidden="true">
-    <!-- serpentine rechts, verticaal gecentreerd -->
-    <svg width="90" height="280" viewBox="0 0 90 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="right:30px;top:50%;transform:translateY(-50%);opacity:.15">
-      <path d="M45,0 C80,35 10,70 45,105 C80,140 10,175 45,210 C80,245 15,265 45,280" stroke="#eab64f" stroke-width="4" stroke-linecap="round"/>
-      <path d="M62,10 C97,45 27,80 62,115 C97,150 27,185 62,220 C97,255 30,268 62,280" stroke="#f26a1e" stroke-width="2.5" stroke-linecap="round" opacity=".65"/>
+    <!-- serpentine rechts, geanimeerd sways -->
+    <svg class="sv2" width="120" height="340" viewBox="0 0 120 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="right:30px;top:50%;margin-top:-170px;opacity:.28">
+      <path d="M60,0 C104,42 16,84 60,126 C104,168 16,210 60,252 C104,294 20,320 60,340" stroke="#eab64f" stroke-width="5.5" stroke-linecap="round"/>
+      <path d="M80,10 C124,52 36,94 80,136 C124,178 36,220 80,262 C124,304 36,328 80,340" stroke="#f26a1e" stroke-width="3" stroke-linecap="round" opacity=".65"/>
     </svg>
-    <!-- serpentine linksboven, klein -->
-    <svg width="70" height="200" viewBox="0 0 70 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="left:14px;top:10px;opacity:.10;transform:rotate(8deg)">
-      <path d="M35,0 C62,25 8,50 35,75 C62,100 8,125 35,150 C62,175 12,190 35,200" stroke="#f6f0e4" stroke-width="3" stroke-linecap="round"/>
+    <!-- serpentine links, floats -->
+    <svg class="sv4" width="85" height="240" viewBox="0 0 85 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="left:10px;top:8px;opacity:.18">
+      <path d="M42,0 C76,30 8,60 42,90 C76,120 8,150 42,180 C76,210 12,228 42,240" stroke="#f6f0e4" stroke-width="4" stroke-linecap="round"/>
+      <path d="M58,8 C92,38 24,68 58,98 C92,128 24,158 58,188 C92,218 26,234 58,240" stroke="#eab64f" stroke-width="2.5" stroke-linecap="round" opacity=".75"/>
     </svg>
   </div>
   <div class="wrap">
@@ -520,14 +533,15 @@
 <!-- ONZE MUZIEK (dark) -->
 <section class="sec dark warmglow" id="muziek" aria-labelledby="muziek-title">
   <div class="serp-layer" aria-hidden="true">
-    <!-- serpentine linksboven -->
-    <svg width="160" height="380" viewBox="0 0 160 380" fill="none" xmlns="http://www.w3.org/2000/svg" style="left:0;top:0;opacity:.16">
-      <path d="M60,0 C20,50 120,100 65,150 C10,200 120,255 65,305 C10,355 90,375 65,380" stroke="#eab64f" stroke-width="4" stroke-linecap="round"/>
-      <path d="M90,0 C50,50 150,100 95,150 C40,200 150,255 95,305 C40,355 115,372 95,380" stroke="#f26a1e" stroke-width="2.5" stroke-linecap="round" opacity=".7"/>
+    <!-- serpentine goud linksboven, sways -->
+    <svg class="sv1" width="200" height="460" viewBox="0 0 200 460" fill="none" xmlns="http://www.w3.org/2000/svg" style="left:-10px;top:-10px;opacity:.28">
+      <path d="M75,0 C18,58 168,115 85,172 C2,230 168,287 85,344 C2,401 120,435 85,460" stroke="#eab64f" stroke-width="5.5" stroke-linecap="round"/>
+      <path d="M108,0 C51,58 201,115 118,172 C35,230 201,287 118,344 C35,401 148,432 118,460" stroke="#f26a1e" stroke-width="3.5" stroke-linecap="round" opacity=".72"/>
     </svg>
-    <!-- serpentine rechtsonder -->
-    <svg width="120" height="300" viewBox="0 0 120 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="right:0;bottom:0;opacity:.13;transform:scaleX(-1)">
-      <path d="M60,0 C100,38 20,76 60,114 C100,152 20,190 60,228 C100,266 28,288 60,300" stroke="#f6f0e4" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- serpentine cream rechtsonder, drifts -->
+    <svg class="sv3" width="160" height="360" viewBox="0 0 160 360" fill="none" xmlns="http://www.w3.org/2000/svg" style="right:-5px;bottom:-10px;opacity:.20">
+      <path d="M80,0 C130,45 30,90 80,135 C130,180 30,225 80,270 C130,315 38,342 80,360" stroke="#f6f0e4" stroke-width="5" stroke-linecap="round"/>
+      <path d="M100,10 C150,55 50,100 100,145 C150,190 50,235 100,280 C150,325 55,348 100,360" stroke="#eab64f" stroke-width="3" stroke-linecap="round" opacity=".80"/>
     </svg>
   </div>
   <div class="wrap">
@@ -663,18 +677,21 @@
 
 <!-- BOEKINGEN — groot & duidelijk (dark) -->
 <section class="sec book" id="boeken" aria-labelledby="boek-title">
-  <div class="book-bg" aria-hidden="true"><img src="gallery-portrait.jpg" alt=""></div>
-  <div class="book-orange-glow" aria-hidden="true"></div>
   <div class="serp-layer" aria-hidden="true">
-    <!-- serpentine rechtsonder -->
-    <svg width="150" height="370" viewBox="0 0 150 370" fill="none" xmlns="http://www.w3.org/2000/svg" style="right:10px;bottom:0;opacity:.22">
-      <path d="M100,0 C55,48 140,95 95,142 C50,190 140,237 95,283 C50,330 118,352 95,370" stroke="#eab64f" stroke-width="4.5" stroke-linecap="round"/>
-      <path d="M118,15 C73,63 158,110 113,157 C68,205 158,248 113,295 C68,342 133,360 113,370" stroke="#f26a1e" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>
+    <!-- serpentine goud rechtsonder, sways -->
+    <svg class="sv1" width="185" height="440" viewBox="0 0 185 440" fill="none" xmlns="http://www.w3.org/2000/svg" style="right:5px;bottom:0;opacity:.34">
+      <path d="M115,0 C60,55 175,110 115,165 C55,220 175,275 115,330 C55,385 138,415 115,440" stroke="#eab64f" stroke-width="6" stroke-linecap="round"/>
+      <path d="M138,12 C83,67 198,122 138,177 C78,232 198,283 138,338 C78,393 158,418 138,440" stroke="#f26a1e" stroke-width="3.5" stroke-linecap="round" opacity=".65"/>
+      <path d="M92,6 C37,61 152,116 92,171 C32,226 152,277 92,332 C32,387 116,412 92,440" stroke="#e8462f" stroke-width="2.5" stroke-linecap="round" opacity=".45"/>
     </svg>
-    <!-- serpentine linksboven -->
-    <svg width="110" height="290" viewBox="0 0 110 290" fill="none" xmlns="http://www.w3.org/2000/svg" style="left:8px;top:-5px;opacity:.15;transform:scaleX(-1)">
-      <path d="M55,0 C90,36 18,72 55,108 C92,144 20,180 55,216 C90,252 24,272 55,290" stroke="#f6f0e4" stroke-width="3.5" stroke-linecap="round"/>
-      <path d="M72,8 C107,44 35,80 72,116 C109,152 37,188 72,224 C109,260 40,278 72,290" stroke="#eab64f" stroke-width="2" stroke-linecap="round" opacity=".75"/>
+    <!-- serpentine cream+goud linksboven, drifts -->
+    <svg class="sv5" width="155" height="390" viewBox="0 0 155 390" fill="none" xmlns="http://www.w3.org/2000/svg" style="left:-5px;top:-10px;opacity:.26">
+      <path d="M78,0 C124,48 32,96 78,144 C124,192 32,240 78,288 C124,336 38,364 78,390" stroke="#f6f0e4" stroke-width="5" stroke-linecap="round"/>
+      <path d="M100,10 C146,58 54,106 100,154 C146,202 54,250 100,298 C146,346 58,370 100,390" stroke="#eab64f" stroke-width="3" stroke-linecap="round" opacity=".78"/>
+    </svg>
+    <!-- serpentine midden rechts, wiggle -->
+    <svg class="sv6" width="80" height="260" viewBox="0 0 80 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="right:30%;top:5%;opacity:.18">
+      <path d="M40,0 C72,32 8,64 40,96 C72,128 8,160 40,192 C72,224 12,244 40,260" stroke="#eab64f" stroke-width="4" stroke-linecap="round"/>
     </svg>
   </div>
   <div class="wrap">
