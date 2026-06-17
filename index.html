@@ -163,6 +163,30 @@
   .sec.orange .eyebrow{color:#2a1206;}
   .sec.orange .ig-btn{background:#fff;color:#bf3320;box-shadow:0 12px 30px -12px rgba(0,0,0,.45);}
   .sec.orange .ig-btn:hover{filter:none;background:#fff7f2;transform:translateY(-2px);}
+  /* mijlpaal: warm orange tint over dark (minder strak om-en-om) */
+  .sec.mijl{background:radial-gradient(120% 90% at 78% 16%,rgba(242,106,30,.18),transparent 56%),var(--bg);}
+  /* De show on a light section */
+  .sec.light .tier{background:#fff;border-color:var(--linl);box-shadow:0 22px 54px -30px rgba(25,30,38,.3);}
+  .sec.light .tier.feat{background:linear-gradient(180deg,rgba(242,106,30,.14),#fff);border-color:rgba(242,106,30,.5);box-shadow:0 28px 64px -28px rgba(242,106,30,.4);}
+  .sec.light .tier h3{color:var(--ink);}
+  .sec.light .tier .desc{color:#5a6478;}
+  .sec.light .tier li{color:#2c3a52;}
+  .sec.light .tier li svg{stroke:var(--orange);}
+  .sec.light .tier .price{color:var(--ink);}
+  .sec.light .tier .price small{color:#7a8498;}
+  .sec.light .btn-line{color:var(--ink);border-color:rgba(25,30,38,.28);}
+  .sec.light .btn-line:hover{background:var(--ink);color:#fff;border-color:var(--ink);}
+  /* booking background photo */
+  .book{position:relative;overflow:hidden;}
+  .book-bg{position:absolute;inset:0;z-index:0;}
+  .book-bg img{width:100%;height:100%;object-fit:cover;opacity:.3;}
+  .book-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,22,29,.74),rgba(18,22,29,.93));}
+  .book .wrap{position:relative;z-index:1;}
+  /* YouTube recaps button */
+  .yt-recaps{display:flex;justify-content:center;margin-top:30px;}
+  .yt-recaps a{display:inline-flex;align-items:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;padding:13px 24px;border-radius:40px;color:#fff;background:#ff0000;box-shadow:0 12px 30px -12px rgba(255,0,0,.5);transition:transform var(--t) var(--ease),filter var(--t);}
+  .yt-recaps a:hover{transform:translateY(-2px);filter:brightness(1.08);}
+  .yt-recaps a svg{width:24px;height:24px;}
 
   /* about */
   .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;}
@@ -438,7 +462,7 @@
 </section>
 
 <!-- MIJLPAAL (#13) — standalone, groot -->
-<section class="sec dark" id="mijlpaal" aria-labelledby="ms-title">
+<section class="sec dark mijl" id="mijlpaal" aria-labelledby="ms-title">
   <div class="wrap">
     <div class="milestone-big reveal">
       <div class="ms-photo"><img src="viral-50.jpg" alt="Slag en Stoot: #13 in de Spotify Viral 50 Nederland"></div>
@@ -465,6 +489,9 @@
       <div class="reel reveal"><span class="rt">Recap</span><video src="recap-3.mp4" autoplay muted loop playsinline preload="auto"></video></div>
       <div class="reel reveal"><span class="rt">Live</span><video src="recap-4.mp4" autoplay muted loop playsinline preload="auto"></video></div>
       <div class="reel reveal"><span class="rt">Snippet</span><video src="recap-5.mp4" autoplay muted loop playsinline preload="auto"></video></div>
+    </div>
+    <div class="yt-recaps reveal">
+      <a href="https://www.youtube.com/@slagenstoot" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.5 15.5v-7l6.3 3.5z"/></svg> Bekijk onze recaps op YouTube</a>
     </div>
   </div>
 </section>
@@ -520,7 +547,7 @@
 </section>
 
 <!-- DE SHOW — 3 blokken (dark) -->
-<section class="sec dark2" id="show" aria-labelledby="show-title">
+<section class="sec light" id="show" aria-labelledby="show-title">
   <div class="wrap">
     <div class="sec-head center reveal">
       <span class="eyebrow" style="justify-content:center"><svg class="cup" viewBox="0 0 15 18" aria-hidden="true"><path d="M2 3h11l-1.4 13a1.5 1.5 0 0 1-1.5 1.3H4.9a1.5 1.5 0 0 1-1.5-1.3z" fill="#f26a1e"/><rect x="1" y="1.5" width="13" height="2.6" rx="1.3" fill="#ffd0ad"/></svg> De show</span>
@@ -604,6 +631,7 @@
 
 <!-- BOEKINGEN — groot & duidelijk (dark) -->
 <section class="sec book" id="boeken" aria-labelledby="boek-title">
+  <div class="book-bg" aria-hidden="true"><img src="gallery-portrait.jpg" alt=""></div>
   <div class="wrap">
     <div class="book-card reveal">
       <span class="eyebrow"><svg class="cup" viewBox="0 0 15 18" aria-hidden="true"><path d="M2 3h11l-1.4 13a1.5 1.5 0 0 1-1.5 1.3H4.9a1.5 1.5 0 0 1-1.5-1.3z" fill="#f26a1e"/><rect x="1" y="1.5" width="13" height="2.6" rx="1.3" fill="#ffd0ad"/></svg> Boekingen</span>
