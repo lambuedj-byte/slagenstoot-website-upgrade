@@ -299,7 +299,7 @@
   .book .mail b{color:var(--gold);}
 
   /* carnavalsklok — small footnote at the very bottom */
-  .clock-sec{background:var(--paper);}
+  .clock-sec{background:linear-gradient(135deg,#f26a1e,#e8462f 72%);}
   .clock-card{max-width:560px;margin:0 auto;border-radius:16px;border:1px solid rgba(242,106,30,.35);background:#fff;padding:24px 22px;text-align:center;box-shadow:0 18px 44px -28px rgba(25,30,38,.4);}
   .clock-cap{display:inline-flex;align-items:center;gap:9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;color:#c2541a;margin-bottom:4px;}
   .clock-sub{font-size:1.05rem;color:var(--ink);margin-bottom:16px;}
@@ -353,12 +353,12 @@
   /* ── Warmglow: dark-sectie met warme oranje radiale gloed (variant van mijl) ── */
   .sec.dark.warmglow{background:radial-gradient(110% 70% at 10% 90%,rgba(242,106,30,.13),transparent 54%),radial-gradient(60% 44% at 92% 6%,rgba(232,70,47,.09),transparent 50%),var(--bg);}
 
-  /* ── Serpentine animaties ── */
-  @keyframes serp1{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(7deg) translateX(12px)}}
-  @keyframes serp2{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-20px) rotate(5deg)}}
-  @keyframes serp3{0%,100%{transform:rotate(-5deg) skewX(-4deg)}33%{transform:rotate(6deg) skewX(5deg)}66%{transform:rotate(-2deg) skewX(-1deg)}}
-  @keyframes serp4{0%,100%{transform:translateX(0) rotate(3deg)}50%{transform:translateX(-14px) rotate(-5deg)}}
-  @keyframes serp5{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(5deg) translateY(-12px)}}
+  /* ── Serpentine animaties: pendulum (alleen rotatie rond bevestigingspunt) ── */
+  @keyframes serp1{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+  @keyframes serp2{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(4deg)}}
+  @keyframes serp3{0%,100%{transform:rotate(-4deg)}33%{transform:rotate(6deg)}66%{transform:rotate(-2deg)}}
+  @keyframes serp4{0%,100%{transform:rotate(4deg)}50%{transform:rotate(-5deg)}}
+  @keyframes serp5{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(3deg)}}
 
   /* ── Serpentine (streamer) decoratieve lagen ── */
   .serp-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;}
@@ -368,8 +368,23 @@
   .serp-layer .sv3{animation:serp3 6.4s ease-in-out 0.9s infinite;transform-origin:top center;}
   .serp-layer .sv4{animation:serp4 5.1s ease-in-out 0.6s infinite;transform-origin:top center;}
   .serp-layer .sv5{animation:serp5 7.2s ease-in-out 1.8s infinite;transform-origin:top center;}
-  .serp-layer .sv6{animation:serp2 4.8s ease-in-out 2.5s infinite;transform-origin:top center;}
+  .serp-layer .sv6{animation:serp1 4.8s ease-in-out 2.5s infinite;transform-origin:top center;}
   @media(prefers-reduced-motion:reduce){.serp-layer svg{animation:none!important;}}
+
+  /* ── Klok-sectie: oranje achtergrond ── */
+  .sec.clock-sec{background:linear-gradient(135deg,#f26a1e,#e8462f 72%);}
+  .clock-sec .clock-cap{color:rgba(255,255,255,.88);}
+  .clock-sec .clock-sub{color:#fff;font-weight:500;}
+  .clock-sec .clock-foot{color:rgba(255,255,255,.85);}
+  .clock-sec .clock-foot b{color:#fff;}
+  .clock-sec .clock-card{background:rgba(18,22,29,.28);border-color:rgba(255,255,255,.22);box-shadow:0 18px 50px -20px rgba(0,0,0,.55);}
+  .clock-sec .clock-cell{background:rgba(18,22,29,.22);border-color:rgba(255,255,255,.16);}
+  .clock-sec .clock-num{color:#fff;}
+  .clock-sec .clock-lab{color:rgba(255,255,255,.72);}
+
+  /* ── Booking confetti canvas ── */
+  .book-canvas{position:absolute;inset:0;z-index:0;pointer-events:none;}
+  .book-canvas canvas{display:block;width:100%!important;height:100%!important;}
 
   /* responsive */
   @media(max-width:880px){.milestone-big{grid-template-columns:1fr;text-align:center;justify-items:center;}.milestone-big p{margin-left:auto;margin-right:auto;}}
@@ -538,8 +553,8 @@
       <path d="M75,0 C18,58 168,115 85,172 C2,230 168,287 85,344 C2,401 120,435 85,460" stroke="#eab64f" stroke-width="5.5" stroke-linecap="round"/>
       <path d="M108,0 C51,58 201,115 118,172 C35,230 201,287 118,344 C35,401 148,432 118,460" stroke="#f26a1e" stroke-width="3.5" stroke-linecap="round" opacity=".72"/>
     </svg>
-    <!-- serpentine cream rechtsonder, drifts -->
-    <svg class="sv3" width="160" height="360" viewBox="0 0 160 360" fill="none" xmlns="http://www.w3.org/2000/svg" style="right:-5px;bottom:-10px;opacity:.20">
+    <!-- serpentine cream rechts, hangt van boven -->
+    <svg class="sv3" width="160" height="360" viewBox="0 0 160 360" fill="none" xmlns="http://www.w3.org/2000/svg" style="right:-5px;top:0;opacity:.20">
       <path d="M80,0 C130,45 30,90 80,135 C130,180 30,225 80,270 C130,315 38,342 80,360" stroke="#f6f0e4" stroke-width="5" stroke-linecap="round"/>
       <path d="M100,10 C150,55 50,100 100,145 C150,190 50,235 100,280 C150,325 55,348 100,360" stroke="#eab64f" stroke-width="3" stroke-linecap="round" opacity=".80"/>
     </svg>
@@ -677,9 +692,10 @@
 
 <!-- BOEKINGEN — groot & duidelijk (dark) -->
 <section class="sec book" id="boeken" aria-labelledby="boek-title">
+  <div class="book-canvas" id="bookCanvas" aria-hidden="true"></div>
   <div class="serp-layer" aria-hidden="true">
     <!-- serpentine goud rechtsonder, sways -->
-    <svg class="sv1" width="185" height="440" viewBox="0 0 185 440" fill="none" xmlns="http://www.w3.org/2000/svg" style="right:5px;bottom:0;opacity:.34">
+    <svg class="sv1" width="185" height="440" viewBox="0 0 185 440" fill="none" xmlns="http://www.w3.org/2000/svg" style="right:5px;top:0;opacity:.34">
       <path d="M115,0 C60,55 175,110 115,165 C55,220 175,275 115,330 C55,385 138,415 115,440" stroke="#eab64f" stroke-width="6" stroke-linecap="round"/>
       <path d="M138,12 C83,67 198,122 138,177 C78,232 198,283 138,338 C78,393 158,418 138,440" stroke="#f26a1e" stroke-width="3.5" stroke-linecap="round" opacity=".65"/>
       <path d="M92,6 C37,61 152,116 92,171 C32,226 152,277 92,332 C32,387 116,412 92,440" stroke="#e8462f" stroke-width="2.5" stroke-linecap="round" opacity=".45"/>
@@ -795,7 +811,7 @@
 
   /* Carnavalsklok */
   (function(){const t=new Date('2027-02-05T11:11:00').getTime();const e={days:g('days'),hours:g('hours'),minutes:g('minutes'),seconds:g('seconds')};function g(k){return document.getElementById('cd-'+k);}if(!e.days)return;const pad=(n,l)=>String(n).padStart(l,'0'),prev={};function flip(el,v){el.classList.remove('flip');void el.offsetWidth;el.textContent=v;el.classList.add('flip');setTimeout(()=>el.classList.remove('flip'),150);}function tick(){const d=Math.max(0,t-Date.now());const v={days:pad(d/864e5|0,3),hours:pad(d%864e5/36e5|0,2),minutes:pad(d%36e5/6e4|0,2),seconds:pad(d%6e4/1e3|0,2)};for(const k in v)if(v[k]!==prev[k]){flip(e[k],v[k]);prev[k]=v[k];}}tick();setInterval(tick,1000);})();
-  (function(){const clock=document.getElementById('aftellen');if(!clock||REDUCE)return;let iv=null;const co=new IntersectionObserver((es)=>{es.forEach(x=>{if(x.isIntersecting){const r=x.target.getBoundingClientRect();burstAt(innerWidth*.5,r.top+60,26);if(!iv)iv=setInterval(()=>{const rr=clock.getBoundingClientRect();if(rr.bottom>0&&rr.top<innerHeight)burstAt(Math.random()*innerWidth,rr.top+40,5);},1600);}else if(iv){clearInterval(iv);iv=null;}});},{threshold:.3});co.observe(clock);})();
+
 
   /* FAQ accordion */
   document.querySelectorAll('.faq-item').forEach(item=>{const btn=item.querySelector('.faq-q'),ans=item.querySelector('.faq-a');btn.addEventListener('click',()=>{const open=item.classList.toggle('open');btn.setAttribute('aria-expanded',open);ans.style.maxHeight=open?ans.scrollHeight+'px':null;});});
@@ -823,6 +839,52 @@
     });
     const hero=document.getElementById('top');
     if(hero&&'IntersectionObserver'in window){new IntersectionObserver((es)=>{es.forEach(x=>{try{x.isIntersecting?inst.loop():inst.noLoop();}catch(_){}})},{threshold:0}).observe(hero);}
+  })();
+
+  /* Booking-sectie confetti — zelfde stijl als hero maar meer getemperd */
+  (function(){
+    if(REDUCE || typeof p5==='undefined')return;
+    const host=document.getElementById('bookCanvas');if(!host)return;
+    const COLORS=['#f26a1e','#e8462f','#eab64f','#f6f0e4','#ff8a3a'];
+    new p5(p=>{
+      let parts=[],W=1,H=1;const N=52;
+      function size(){const r=host.getBoundingClientRect();W=Math.max(1,r.width);H=Math.max(1,r.height);}
+      class P{
+        constructor(init){this.reset(init);}
+        reset(init){
+          this.z=p.random(.5,1);
+          this.x=p.random(W);
+          this.y=init?p.random(H):-12;
+          this.s=p.random(5,13)*this.z;
+          this.rot=p.random(p.TWO_PI);
+          this.vr=p.random(-.03,.03);
+          this.col=p.color(COLORS[(p.random(COLORS.length))|0]);
+          this.vy=p.random(.45,1.3)*this.z;
+          this.vx=p.random(-.25,.25);
+          this.circ=p.random()>.6;
+        }
+        step(){
+          this.x+=this.vx;
+          this.y+=this.vy;
+          this.rot+=this.vr;
+          if(this.y>H+16||this.x<-20||this.x>W+20)this.reset(false);
+        }
+        draw(){
+          const al=90*this.z+40;
+          this.col.setAlpha(al);
+          p.push();p.translate(this.x,this.y);p.rotate(this.rot);
+          p.noStroke();p.fill(this.col);
+          if(this.circ){p.circle(0,0,this.s);}
+          else{p.rectMode(p.CENTER);p.rect(0,0,this.s,this.s*1.65,1);}
+          p.pop();
+        }
+      }
+      p.setup=function(){size();const c=p.createCanvas(W,H);c.parent(host);p.randomSeed(13);parts=Array.from({length:N},()=>new P(true));p.clear();};
+      p.draw=function(){p.clear();for(const q of parts){q.step();q.draw();}};
+      p.windowResized=function(){size();p.resizeCanvas(W,H);};
+      const sec=document.getElementById('boeken');
+      if(sec&&'IntersectionObserver'in window){new IntersectionObserver((es)=>{es.forEach(x=>{try{x.isIntersecting?p.loop():p.noLoop();}catch(_){}});},{threshold:0}).observe(sec);}
+    });
   })();
 </script>
 </body>
