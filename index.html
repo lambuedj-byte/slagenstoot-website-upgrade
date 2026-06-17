@@ -301,18 +301,6 @@
   .book .mail{display:block;margin-top:18px;font-size:.92rem;color:var(--faint);}
   .book .mail b{color:var(--gold);}
 
-  /* carnavalsklok — small footnote at the very bottom */
-  .clock-sec{background:var(--bg-2);}
-  .clock-card{max-width:560px;margin:0 auto;border-radius:16px;border:1px solid rgba(242,106,30,.35);background:var(--surface);padding:24px 22px;text-align:center;box-shadow:0 18px 44px -28px rgba(0,0,0,.55);}
-  .clock-cap{display:inline-flex;align-items:center;gap:9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;color:var(--orange-2);margin-bottom:4px;}
-  .clock-sub{font-size:1.05rem;color:var(--cream);margin-bottom:16px;}
-  .clock-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:420px;margin:0 auto;}
-  .clock-cell{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 6px;}
-  .clock-num{font-family:'Graduate',serif;font-size:clamp(1.3rem,5vw,1.9rem);line-height:1;color:var(--orange);font-variant-numeric:tabular-nums;transition:transform .15s var(--ease);}
-  .clock-num.flip{transform:translateY(-4px);}
-  .clock-lab{display:block;margin-top:8px;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.6rem;color:var(--muted);}
-  .clock-foot{margin-top:16px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-size:.82rem;}
-  .clock-foot b{color:var(--gold);}
 
   /* footer */
   footer{background:var(--bg-2);border-top:1px solid var(--line);padding:56px 0 32px;}
@@ -703,22 +691,6 @@
   </div>
 </section>
 
-<!-- CARNAVALSKLOK — klein, voor de grap (light) -->
-<section class="sec clock-sec" id="aftellen" aria-label="Aftellen naar carnaval">
-  <div class="wrap">
-    <div class="clock-card reveal">
-      <span class="clock-cap"><svg class="cup" viewBox="0 0 15 18" aria-hidden="true"><path d="M2 3h11l-1.4 13a1.5 1.5 0 0 1-1.5 1.3H4.9a1.5 1.5 0 0 1-1.5-1.3z" fill="#f26a1e"/><rect x="1" y="1.5" width="13" height="2.6" rx="1.3" fill="#ffd0ad"/></svg> PS · Carnaval 2027</span>
-      <div class="clock-sub">De carnavalsklok tikt door…</div>
-      <div class="clock-grid">
-        <div class="clock-cell"><div class="clock-num" id="cd-days">---</div><span class="clock-lab">Dagen</span></div>
-        <div class="clock-cell"><div class="clock-num" id="cd-hours">--</div><span class="clock-lab">Uren</span></div>
-        <div class="clock-cell"><div class="clock-num" id="cd-minutes">--</div><span class="clock-lab">Minuten</span></div>
-        <div class="clock-cell"><div class="clock-num" id="cd-seconds">--</div><span class="clock-lab">Seconden</span></div>
-      </div>
-      <div class="clock-foot">5 februari · <b>11:11 uur</b> &nbsp;—&nbsp; alaaf!</div>
-    </div>
-  </div>
-</section>
 
 </main>
 
@@ -785,8 +757,7 @@
   function burstAt(x,y,n){const c=document.getElementById('confetti');if(!c)return;const cols=['#f26a1e','#e8462f','#eab64f','#f6f0e4','#ff8a3a'];for(let i=0;i<n;i++){const el=document.createElement('div');el.className='cf';const col=cols[(Math.random()*cols.length)|0],sz=6+Math.random()*7,circ=Math.random()>.5;el.style.cssText=`left:${x}px;top:${y}px;width:${sz}px;height:${circ?sz:sz*1.7}px;background:${col};border-radius:${circ?'50%':'2px'}`;c.appendChild(el);const ang=Math.random()*Math.PI*2,vel=5+Math.random()*9,vx=Math.cos(ang)*vel,vy=Math.sin(ang)*vel-8,rot=Math.random()*720-360,dur=1100+Math.random()*900;el.animate([{transform:'translate(0,0) rotate(0)',opacity:1},{transform:`translate(${vx*26}px,${vy*20+280}px) rotate(${rot}deg)`,opacity:0}],{duration:dur,easing:'cubic-bezier(.2,.6,.4,1)',fill:'forwards'});setTimeout(()=>el.remove(),dur+60);}}
   (function(){const hero=document.getElementById('top');if(!hero||REDUCE)return;hero.addEventListener('click',e=>burstAt(e.clientX,e.clientY,16));})();
 
-  /* Carnavalsklok */
-  (function(){const t=new Date('2027-02-05T11:11:00').getTime();const e={days:g('days'),hours:g('hours'),minutes:g('minutes'),seconds:g('seconds')};function g(k){return document.getElementById('cd-'+k);}if(!e.days)return;const pad=(n,l)=>String(n).padStart(l,'0'),prev={};function flip(el,v){el.classList.remove('flip');void el.offsetWidth;el.textContent=v;el.classList.add('flip');setTimeout(()=>el.classList.remove('flip'),150);}function tick(){const d=Math.max(0,t-Date.now());const v={days:pad(d/864e5|0,3),hours:pad(d%864e5/36e5|0,2),minutes:pad(d%36e5/6e4|0,2),seconds:pad(d%6e4/1e3|0,2)};for(const k in v)if(v[k]!==prev[k]){flip(e[k],v[k]);prev[k]=v[k];}}tick();setInterval(tick,1000);})();
+
 
 
   /* FAQ accordion */
