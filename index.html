@@ -812,6 +812,7 @@
 
   /* Keep videos autoplaying */
   document.querySelectorAll('video').forEach(v=>{const tryplay=()=>v.play().catch(()=>{});v.addEventListener('loadeddata',tryplay);document.addEventListener('visibilitychange',()=>{if(!document.hidden)tryplay();});});
+  const heroVid=document.querySelector('.hero-bg video');if(heroVid){heroVid.addEventListener('loadedmetadata',()=>{heroVid.currentTime=70;});}
 
   /* Carnaval Drift — generative hero particle layer */
   (function(){
