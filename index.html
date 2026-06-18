@@ -462,7 +462,7 @@
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-bg">
-    <video autoplay muted loop playsinline preload="auto" poster="hero-orange.jpg"><source src="hero-promo.mp4#t=70" type="video/mp4"></video>
+    <video autoplay muted loop playsinline preload="auto" poster="hero-orange.jpg"><source src="hero-promo.mp4" type="video/mp4"></video>
     <div class="stripes"></div>
   </div>
   <div class="hero-glow" aria-hidden="true"></div>
@@ -812,7 +812,6 @@
 
   /* Keep videos autoplaying */
   document.querySelectorAll('video').forEach(v=>{const tryplay=()=>v.play().catch(()=>{});v.addEventListener('loadeddata',tryplay);document.addEventListener('visibilitychange',()=>{if(!document.hidden)tryplay();});});
-  const heroVid=document.querySelector('.hero-bg video');if(heroVid){heroVid.currentTime=70;heroVid.addEventListener('loadedmetadata',()=>{if(heroVid.currentTime<70)heroVid.currentTime=70;});}
 
   /* Carnaval Drift — generative hero particle layer */
   (function(){
