@@ -16,6 +16,7 @@
 <meta property="og:description" content="Carnaval + jouw hits in 1 uur. Eigen platen óók live. #13 in de Spotify Viral 50 NL.">
 <meta property="og:url" content="https://www.slagenstoot.nl/">
 <meta property="og:image" content="https://www.slagenstoot.nl/images/og-image.jpg">
+<meta property="og:image:alt" content="Slag &amp; Stoot — carnaval dj-act in honkbalpak">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="1200">
 <meta property="og:locale" content="nl_NL">
 <meta name="twitter:card" content="summary_large_image">
@@ -514,7 +515,7 @@
       </div>
       <div class="reveal d2">
         <div class="about-photo">
-          <img src="about-cream.jpg" alt="Slag en Stoot — Tim en Rens in honkbalpak met knuppel en handschoen">
+          <img src="about-cream.jpg" alt="Slag en Stoot — Tim en Rens in honkbalpak met knuppel en handschoen" width="2000" height="1333" loading="lazy">
           <div class="pn"><span class="nm">SLAG &amp; STOOT</span><span class="no">13</span></div>
         </div>
         <div class="about-vids">
@@ -542,7 +543,7 @@
   </div>
   <div class="wrap">
     <div class="milestone-big reveal">
-      <div class="ms-photo"><img src="viral-50.jpg" alt="Slag en Stoot: #13 in de Spotify Viral 50 Nederland"></div>
+      <div class="ms-photo"><img src="viral-50.jpg" alt="Slag en Stoot: #13 in de Spotify Viral 50 Nederland" width="700" height="938" loading="lazy"></div>
       <div>
         <span class="eyebrow"><svg class="cup" viewBox="0 0 15 18" aria-hidden="true"><path d="M2 3h11l-1.4 13a1.5 1.5 0 0 1-1.5 1.3H4.9a1.5 1.5 0 0 1-1.5-1.3z" fill="#f26a1e"/><rect x="1" y="1.5" width="13" height="2.6" rx="1.3" fill="#ffd0ad"/></svg> Dikke mijlpaal</span>
         <div class="ms-13" aria-hidden="true">#13</div>
@@ -562,10 +563,10 @@
       <p class="sec-intro">Een paar recente clips — beweeg erover om mee te kijken.</p>
     </div>
     <div class="ig-reels">
-      <div class="reel reveal"><span class="rt">Story</span><video src="recap-2.mp4" autoplay muted loop playsinline preload="auto"></video></div>
-      <div class="reel reveal"><span class="rt">Recap</span><video src="recap-3.mp4" autoplay muted loop playsinline preload="auto"></video></div>
-      <div class="reel reveal"><span class="rt">Live</span><video src="recap-4.mp4" autoplay muted loop playsinline preload="auto"></video></div>
-      <div class="reel reveal"><span class="rt">Snippet</span><video src="recap-5.mp4" autoplay muted loop playsinline preload="auto"></video></div>
+      <div class="reel reveal"><span class="rt">Story</span><video class="lazy-vid" data-src="recap-2.mp4" muted loop playsinline preload="none"></video></div>
+      <div class="reel reveal"><span class="rt">Recap</span><video class="lazy-vid" data-src="recap-3.mp4" muted loop playsinline preload="none"></video></div>
+      <div class="reel reveal"><span class="rt">Live</span><video class="lazy-vid" data-src="recap-4.mp4" muted loop playsinline preload="none"></video></div>
+      <div class="reel reveal"><span class="rt">Snippet</span><video class="lazy-vid" data-src="recap-5.mp4" muted loop playsinline preload="none"></video></div>
     </div>
     <div class="yt-recaps reveal">
       <a href="https://www.youtube.com/@slagenstoot" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.5 15.5v-7l6.3 3.5z"/></svg> Bekijk onze recaps op YouTube</a>
@@ -595,7 +596,7 @@
     <div class="music-grid">
       <div class="track-feat reveal">
         <div class="tf-media">
-          <video src="promo-zet-die-tap.mp4" autoplay muted loop playsinline preload="auto" poster="hero-orange.jpg"></video>
+          <video class="lazy-vid" data-src="promo-zet-die-tap.mp4" muted loop playsinline preload="none" poster="hero-orange.jpg"></video>
           <span class="badge">Hit 2026 · #13 Viral 50</span>
         </div>
         <div class="tf-body">
@@ -764,7 +765,7 @@
         <div class="foot-col"><h4>Roster</h4><a href="tel:+31657169166">DJ · +31 6 57 16 91 66</a><a href="tel:+31653277292">MC · +31 6 53 27 72 92</a></div>
       </nav>
     </div>
-    <div class="foot-bottom">&copy; 2026 Slag &amp; Stoot · Carnaval DJ-act · Alle rechten voorbehouden.</div>
+    <div class="foot-bottom">&copy; 2026 Slag &amp; Stoot · Carnaval DJ-act · Alle rechten voorbehouden. · <a href="privacy.html" style="text-decoration:underline">Privacyverklaring</a></div>
   </div>
 </footer>
 
@@ -812,6 +813,24 @@
 
   /* Keep videos autoplaying */
   document.querySelectorAll('video').forEach(v=>{const tryplay=()=>v.play().catch(()=>{});v.addEventListener('loadeddata',tryplay);document.addEventListener('visibilitychange',()=>{if(!document.hidden)tryplay();});});
+
+  /* Lazy-load below-the-fold background video's: pas downloaden + afspelen zodra ze in beeld scrollen */
+  (function(){
+    const vids=document.querySelectorAll('video.lazy-vid');
+    if(!vids.length)return;
+    const io=new IntersectionObserver((es)=>{
+      es.forEach(x=>{
+        const v=x.target;
+        if(x.isIntersecting){
+          if(!v.src && v.dataset.src){v.src=v.dataset.src;v.load();}
+          v.play().catch(()=>{});
+        }else{
+          v.pause();
+        }
+      });
+    },{threshold:.15,rootMargin:'200px 0px'});
+    vids.forEach(v=>io.observe(v));
+  })();
 
   /* Carnaval Drift — generative hero particle layer */
   (function(){
