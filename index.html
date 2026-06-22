@@ -846,18 +846,28 @@
   (function(){
     const vids=document.querySelectorAll('video.lazy-vid');
     if(!vids.length)return;
+    function tryplay(v){v.muted=true;v.playsInline=true;const p=v.play();if(p&&p.catch)p.catch(()=>{});}
+    function startLoading(v){
+      if(v.src || !v.dataset.src)return;
+      v.muted=true;
+      v.src=v.dataset.src;
+      v.addEventListener('canplay',()=>tryplay(v),{once:true});
+      v.addEventListener('loadeddata',()=>tryplay(v),{once:true});
+      v.load();
+    }
     const io=new IntersectionObserver((es)=>{
       es.forEach(x=>{
         const v=x.target;
         if(x.isIntersecting){
-          if(!v.src && v.dataset.src){v.src=v.dataset.src;v.load();}
-          v.play().catch(()=>{});
+          if(!v.src){startLoading(v);}else{tryplay(v);}
         }else{
           v.pause();
         }
       });
     },{threshold:.15,rootMargin:'200px 0px'});
     vids.forEach(v=>io.observe(v));
+    /* Extra vangnet: alsnog proberen te spelen zodra de pagina weer actief/zichtbaar wordt */
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden)vids.forEach(v=>{if(v.src && v.paused)tryplay(v);});});
   })();
 
   /* Cookiemelding: Instagram/Spotify-embeds pas laden na toestemming */
