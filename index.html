@@ -274,6 +274,25 @@
   .reel .rt{position:absolute;top:10px;left:10px;z-index:2;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.66rem;background:rgba(18,22,29,.82);color:#ffd0ad;padding:4px 9px;border-radius:6px;}
   .ig-embed{background:#fff;border:1px solid var(--linl);border-radius:16px;padding:14px;box-shadow:0 24px 60px -32px rgba(25,30,38,.5);overflow:hidden;}
   .ig-embed iframe{width:100%;border:none;overflow:hidden;min-height:520px;border-radius:10px;}
+
+  /* Cookie-gated embeds (Instagram/Spotify) */
+  .embed-wrap{position:relative;}
+  .embed-wrap.gated .gated-embed{visibility:hidden;}
+  .embed-placeholder{display:none;width:100%;min-height:90px;align-items:center;justify-content:center;text-align:center;gap:6px;flex-direction:column;background:rgba(246,240,228,.04);border:1px dashed var(--line);border-radius:10px;padding:16px;cursor:pointer;font-family:'Barlow',sans-serif;color:var(--muted);font-size:.86rem;line-height:1.5;}
+  .ig-embed .embed-placeholder{background:#f6f3ec;border-color:var(--linl);color:var(--ink-soft);min-height:200px;}
+  .embed-wrap.gated{position:relative;}
+  .embed-wrap.gated .embed-placeholder{display:flex;position:absolute;inset:0;}
+  .embed-placeholder b{color:var(--cream);text-decoration:underline;}
+  .ig-embed .embed-placeholder b{color:var(--ink);}
+
+  /* Cookiebanner */
+  #cookieBanner{position:fixed;left:16px;right:16px;bottom:16px;z-index:999;max-width:560px;margin:0 auto;background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 24px 60px -20px rgba(0,0,0,.6);display:none;}
+  #cookieBanner.show{display:block;}
+  #cookieBanner p{font-size:.92rem;color:var(--muted);margin-bottom:14px;}
+  #cookieBanner .cb-btns{display:flex;gap:10px;flex-wrap:wrap;}
+  #cookieBanner button{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.84rem;padding:10px 16px;border-radius:8px;cursor:pointer;border:2px solid transparent;}
+  #cookieBanner .cb-accept{background:linear-gradient(120deg,var(--orange),var(--red));color:#fff;}
+  #cookieBanner .cb-essential{background:transparent;color:var(--cream);border-color:var(--line);}
   .ig-follow{display:flex;justify-content:center;margin-top:30px;}
   .ig-btn{display:inline-flex;align-items:center;gap:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase;padding:14px 26px;border-radius:40px;color:#fff;background:linear-gradient(120deg,#f26a1e,#e8462f);box-shadow:0 12px 30px -12px rgba(242,106,30,.6);transition:transform var(--t) var(--ease),filter var(--t);}
   .ig-btn:hover{transform:translateY(-2px);filter:brightness(1.06);}
@@ -440,6 +459,15 @@
 <a href="#main" class="skip">Naar hoofdinhoud</a>
 <div id="confetti" aria-hidden="true"></div>
 
+<!-- Cookiebanner: Instagram/Spotify-embeds plaatsen pas cookies na toestemming -->
+<div id="cookieBanner" role="dialog" aria-label="Cookiemelding">
+  <p>We gebruiken embeds van Instagram en Spotify die cookies van die partijen kunnen plaatsen. Wil je deze laden? Lees meer in onze <a href="privacy.html" style="text-decoration:underline">privacyverklaring</a>.</p>
+  <div class="cb-btns">
+    <button type="button" class="cb-accept" id="cbAccept">Accepteren</button>
+    <button type="button" class="cb-essential" id="cbEssential">Alleen noodzakelijk</button>
+  </div>
+</div>
+
 <!-- NAV -->
 <header class="nav" id="nav">
   <div class="nav-inner">
@@ -604,11 +632,11 @@
           <h3>Zet Die Tap Maar Open</h3>
           <div class="tf-stats"><div><div class="n">350K+</div><div class="l">Streams &amp; views</div></div><div><div class="n">#13</div><div class="l">Spotify Viral 50</div></div></div>
           <a class="yt" href="https://www.youtube.com/watch?v=MvUmY3AFMO0" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.5 15.5v-7l6.3 3.5z"/></svg> Bekijk de videoclip op YouTube</a>
-          <iframe title="Spotify — Zet Die Tap Maar Open" src="https://open.spotify.com/embed/track/4zGp1OpaQRgrBCYaw22o9K?utm_source=generator&theme=0" width="100%" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <div class="embed-wrap" data-consent-platform="Spotify"><iframe class="gated-embed" title="Spotify — Zet Die Tap Maar Open" data-src="https://open.spotify.com/embed/track/4zGp1OpaQRgrBCYaw22o9K?utm_source=generator&theme=0" width="100%" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
       </div>
-      <div class="track reveal d1"><span class="eyebrow">Nieuw · Hardstyle</span><h3>Zet Die Tap Maar Open (Mafklapperz Remix)</h3><iframe title="Spotify — Mafklapperz Remix" src="https://open.spotify.com/embed/track/1Zqow2vYPZdDTMOYan8n3p?utm_source=generator&theme=0" width="100%" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
-      <div class="track reveal d2"><span class="eyebrow">Carnaval 2025</span><h3>Meter Bier</h3><iframe title="Spotify — Meter Bier" src="https://open.spotify.com/embed/track/4X4pe2rCcK4YuJwHV5bUeU?utm_source=generator&theme=0" width="100%" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+      <div class="track reveal d1"><span class="eyebrow">Nieuw · Hardstyle</span><h3>Zet Die Tap Maar Open (Mafklapperz Remix)</h3><div class="embed-wrap" data-consent-platform="Spotify"><iframe class="gated-embed" title="Spotify — Mafklapperz Remix" data-src="https://open.spotify.com/embed/track/1Zqow2vYPZdDTMOYan8n3p?utm_source=generator&theme=0" width="100%" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div></div>
+      <div class="track reveal d2"><span class="eyebrow">Carnaval 2025</span><h3>Meter Bier</h3><div class="embed-wrap" data-consent-platform="Spotify"><iframe class="gated-embed" title="Spotify — Meter Bier" data-src="https://open.spotify.com/embed/track/4X4pe2rCcK4YuJwHV5bUeU?utm_source=generator&theme=0" width="100%" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div></div>
       <p class="music-note reveal">Meter Bier (Carnaval 2025) werd opgepikt door grote namen als FeestDJRuud en Wescalatie — en legde de basis voor de doorbraak van Zet Die Tap Maar Open, dat dit jaar ook een hardstyle remix kreeg van Mafklapperz.</p>
     </div>
   </div>
@@ -624,7 +652,7 @@
     </div>
     <!-- Instagram-feed widget (Mirror-app) — zelfde als op slagenstoot.nl -->
     <div class="ig-embed reveal">
-      <iframe onload="iFrameSetup(this)" title="Instagram-feed van Slag en Stoot" src="https://app.mirror-app.com/feed-instagram/da90d32e-b865-4dce-a557-42548a01fcc0/preview" scrolling="no"></iframe>
+      <div class="embed-wrap" data-consent-platform="Instagram"><iframe class="gated-embed" onload="if(this.src&amp;&amp;this.src!=='about:blank')iFrameSetup(this)" title="Instagram-feed van Slag en Stoot" data-src="https://app.mirror-app.com/feed-instagram/da90d32e-b865-4dce-a557-42548a01fcc0/preview" scrolling="no"></iframe></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@mirrorapp/iframe-bridge@latest/dist/index.umd.js"></script>
     <div class="ig-follow reveal">
@@ -765,7 +793,7 @@
         <div class="foot-col"><h4>Roster</h4><a href="tel:+31657169166">DJ · +31 6 57 16 91 66</a><a href="tel:+31653277292">MC · +31 6 53 27 72 92</a></div>
       </nav>
     </div>
-    <div class="foot-bottom">&copy; 2026 Slag &amp; Stoot · Carnaval DJ-act · Alle rechten voorbehouden. · <a href="privacy.html" style="text-decoration:underline">Privacyverklaring</a></div>
+    <div class="foot-bottom">&copy; 2026 Slag &amp; Stoot · Carnaval DJ-act · Alle rechten voorbehouden. · <a href="privacy.html" style="text-decoration:underline">Privacyverklaring</a> · <a href="#" data-cookie-settings style="text-decoration:underline">Cookie-instellingen</a></div>
   </div>
 </footer>
 
@@ -830,6 +858,58 @@
       });
     },{threshold:.15,rootMargin:'200px 0px'});
     vids.forEach(v=>io.observe(v));
+  })();
+
+  /* Cookiemelding: Instagram/Spotify-embeds pas laden na toestemming */
+  (function(){
+    const KEY='ss_cookie_consent';
+    const banner=document.getElementById('cookieBanner');
+    const wraps=()=>document.querySelectorAll('.embed-wrap');
+
+    function loadEmbed(wrap){
+      const f=wrap.querySelector('.gated-embed');
+      if(f && f.dataset.src && f.getAttribute('src')!==f.dataset.src){f.src=f.dataset.src;}
+      wrap.classList.remove('gated');
+    }
+    function unloadEmbed(wrap){
+      const f=wrap.querySelector('.gated-embed');
+      if(f){f.removeAttribute('src');}
+      wrap.classList.add('gated');
+      ensurePlaceholder(wrap);
+    }
+    function ensurePlaceholder(wrap){
+      if(wrap.querySelector('.embed-placeholder'))return;
+      const platform=wrap.dataset.consentPlatform||'deze partij';
+      const btn=document.createElement('button');
+      btn.type='button';
+      btn.className='embed-placeholder';
+      btn.innerHTML='<b>Klik om te laden</b><span>Plaatst cookies van '+platform+'</span>';
+      btn.addEventListener('click',()=>{loadEmbed(wrap);localStorage.setItem(KEY,'all');hideBanner();});
+      wrap.appendChild(btn);
+    }
+    function loadAll(){wraps().forEach(loadEmbed);}
+    function gateAll(){wraps().forEach(unloadEmbed);}
+    function showBanner(){if(banner)banner.classList.add('show');}
+    function hideBanner(){if(banner)banner.classList.remove('show');}
+
+    const consent=localStorage.getItem(KEY);
+    if(consent==='all'){loadAll();}
+    else{
+      gateAll();
+      if(!consent)showBanner();
+    }
+
+    const accept=document.getElementById('cbAccept'),essential=document.getElementById('cbEssential');
+    if(accept)accept.addEventListener('click',()=>{localStorage.setItem(KEY,'all');loadAll();hideBanner();});
+    if(essential)essential.addEventListener('click',()=>{localStorage.setItem(KEY,'essential');hideBanner();});
+
+    /* Footer-link om keuze later weer aan te passen */
+    document.addEventListener('click',(e)=>{
+      const t=e.target.closest('[data-cookie-settings]');
+      if(!t)return;
+      e.preventDefault();
+      showBanner();
+    });
   })();
 
   /* Carnaval Drift — generative hero particle layer */
