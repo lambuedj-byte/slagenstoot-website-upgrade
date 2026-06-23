@@ -31,8 +31,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@300;400;500;600&family=Graduate&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+<!-- Fonts async: blokkeert render niet meer -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@300;400;500;600&family=Graduate&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@300;400;500;600&family=Graduate&display=swap" rel="stylesheet"></noscript>
 <style>
   /* ============================================================
      SLAG & STOOT — Ballpark Afterparty (warm, alternating light/dark)
@@ -543,7 +544,10 @@
       </div>
       <div class="reveal d2">
         <div class="about-photo">
-          <img src="hero-orange.jpg" alt="Slag en Stoot — Tim en Rens in honkbalpak met knuppel en handschoen">
+          <picture>
+            <source srcset="hero-orange.webp" type="image/webp">
+            <img src="hero-orange.jpg" alt="Slag en Stoot — Tim en Rens in honkbalpak met knuppel en handschoen">
+          </picture>
           <div class="pn"><span class="nm">SLAG &amp; STOOT</span><span class="no">13</span></div>
         </div>
         <div class="about-vids">
@@ -571,7 +575,7 @@
   </div>
   <div class="wrap">
     <div class="milestone-big reveal">
-      <div class="ms-photo"><img src="viral-50.jpg" alt="Slag en Stoot: #13 in de Spotify Viral 50 Nederland"></div>
+      <div class="ms-photo"><picture><source srcset="viral-50.webp" type="image/webp"><img src="viral-50.jpg" alt="Slag en Stoot: #13 in de Spotify Viral 50 Nederland"></picture></div>
       <div>
         <span class="eyebrow"><svg class="cup" viewBox="0 0 15 18" aria-hidden="true"><path d="M2 3h11l-1.4 13a1.5 1.5 0 0 1-1.5 1.3H4.9a1.5 1.5 0 0 1-1.5-1.3z" fill="#f26a1e"/><rect x="1" y="1.5" width="13" height="2.6" rx="1.3" fill="#ffd0ad"/></svg> Dikke mijlpaal</span>
         <div class="ms-13" aria-hidden="true">#13</div>
@@ -797,6 +801,8 @@
   </div>
 </footer>
 
+<!-- p5.js onderaan: laadt pas na de HTML zodat het render niet blokkeert -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
 <script>
   /* Nav */
   const nav=document.getElementById('nav'),navToggle=document.getElementById('navToggle'),navLinks=document.getElementById('navLinks');
