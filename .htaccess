@@ -1,0 +1,75 @@
+# ============================================================
+# Slag & Stoot — .htaccess
+# ============================================================
+
+# ----------------------------------------------------------
+# 1. HTTPS afdwingen
+# ----------------------------------------------------------
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ----------------------------------------------------------
+# 2. Non-www → www redirect (301 permanent)
+#    Canonical is www.slagenstoot.nl — zo weet Google
+#    dat er maar één versie van de site bestaat
+# ----------------------------------------------------------
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ----------------------------------------------------------
+# 3. Browser caching (Cache-Control headers)
+#    HTML: altijd revalideren (nieuwe inhoud direct zichtbaar)
+#    Afbeeldingen/video's/fonts: lang bewaren (snel herladen)
+# ----------------------------------------------------------
+<IfModule mod_headers.c>
+
+  # HTML — revalideer altijd, maar sla op als ETag klopt
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # CSS & JS — 1 week (veilig zonder cache-busting)
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+
+  # Afbeeldingen — 30 dagen
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # Video's — 30 dagen
+  <FilesMatch "\.(mp4|webm|ogv)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # Fonts — 1 jaar (fonts veranderen nooit)
+  <FilesMatch "\.(woff2|woff|ttf|otf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+</IfModule>
+
+# ----------------------------------------------------------
+# 4. Beveiligingsheaders
+#    Helpt ook bij SmartScreen / browservertrouwen
+# ----------------------------------------------------------
+<IfModule mod_headers.c>
+  # Voorkomt MIME-type sniffing
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Site mag niet in een iframe geladen worden door derden
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Referrer info alleen naar eigen domein doorgeven
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Minder browser-features die niet nodig zijn
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# ----------------------------------------------------------
+# 5. Directorylijsten uitzetten
+# ----------------------------------------------------------
+Options -Indexes
