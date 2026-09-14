@@ -78,10 +78,8 @@
   header.nav.scrolled{background:rgba(18,22,29,.86);backdrop-filter:blur(14px) saturate(1.2);box-shadow:0 1px 0 var(--line);}
   .nav-inner{max-width:var(--max);margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;transition:padding var(--t) var(--ease);}
   header.nav.scrolled .nav-inner{padding:12px 24px;}
-  .nav-logo{display:flex;align-items:center;gap:10px;}
-  .nav-logo svg{width:30px;height:30px;}
-  .nav-logo .w{font-family:'Graduate',serif;font-size:.96rem;letter-spacing:.05em;color:var(--cream);}
-  .nav-logo .w b{color:var(--orange);font-weight:400;}
+  .nav-logo{display:flex;align-items:center;}
+  .nav-logo img{height:36px;width:auto;display:block;}
   .nav-links{display:flex;align-items:center;gap:26px;}
   .nav-links a{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.96rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);position:relative;transition:color var(--t);}
   .nav-links a:not(.nav-cta):hover{color:var(--cream);}
@@ -373,8 +371,8 @@
   footer{background:var(--bg-2);border-top:1px solid var(--line);padding:56px 0 32px;}
   .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-bottom:32px;}
   .foot-brand{max-width:320px;}
-  .foot-logo{display:flex;align-items:center;gap:10px;font-family:'Graduate',serif;font-size:1.2rem;letter-spacing:.05em;color:var(--cream);margin-bottom:12px;}
-  .foot-logo b{color:var(--orange);font-weight:400;}
+  .foot-logo{display:flex;align-items:center;margin-bottom:12px;}
+  .foot-logo img{height:44px;width:auto;display:block;}
   .foot-brand p{color:var(--faint);font-size:.92rem;line-height:1.6;}
   .foot-nav{display:flex;gap:44px;flex-wrap:wrap;}
   .foot-col h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.74rem;color:var(--orange-2);margin-bottom:14px;}
@@ -490,7 +488,10 @@
 <header class="nav" id="nav">
   <div class="nav-inner">
     <a href="#top" class="nav-logo" aria-label="Slag en Stoot home">
-            <span class="w">SLAG <b>&amp;</b> STOOT</span>
+      <picture>
+        <source srcset="logo-slag-en-stoot.webp" type="image/webp">
+        <img src="logo-slag-en-stoot.png" alt="Slag &amp; Stoot" width="280" height="116">
+      </picture>
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Hoofdmenu">
       <a href="#over-ons">Over ons</a>
@@ -736,7 +737,10 @@
     <div class="foot-top">
       <div class="foot-brand">
         <div class="foot-logo">
-                    SLAG <b>&amp;</b> STOOT
+          <picture>
+            <source srcset="logo-slag-en-stoot.webp" type="image/webp">
+            <img src="logo-slag-en-stoot.png" alt="Slag &amp; Stoot" width="280" height="116">
+          </picture>
         </div>
         <p>Carnaval dj-act in honkbalpak. Carnaval + jouw hits in één uur, eigen platen óók live. Van Brabant tot de Alpen.</p>
         <div class="socials">
